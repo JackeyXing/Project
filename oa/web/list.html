@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:javascript="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset='utf-8'>
+		<title>部门列表页面</title>
+	</head>
+	<body>
+	<script type="text/javascript">
+		function del(dno) {
+			if (window.confirm("确认删除该部门吗？")) {
+				document.location.href = "/oa/dept/delete?deptno = " + dno;
+			}
+		}
+	</script>
+		<h1 align='center'>部门列表</h1>
+		<hr>
+		<table border='1px' align='center' width='50%'>
+			<tr>
+				<th>序号</th>
+				<th>部门编号</th>
+				<th>部门名称</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>10</td>
+				<td>销售部</td>
+				<td>
+					<a href=''>删除</a>
+					<a href='edit.html'>修改</a>
+					<a href='detail.html'>详情</a>
+				</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>20</td>
+				<td>研发部</td>
+				<td>
+					<a href=''>删除</a>
+					<a href='edit.html'>修改</a>
+					<a href='detail.html'>详情</a>
+				</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>30</td>
+				<td>运营部</td>
+				<td>
+					<a href='<a href="javascript:void(0)" onclick="del()"'>删除</a>
+					<a href='edit.html'>修改</a>
+					<a href='detail.html'>详情</a>
+				</td>
+			</tr>
+		</table>
+		<hr>
+		<a href='add.html'>新增部门</a>
+	</body>
+</html>
