@@ -73,14 +73,16 @@ public class DeptServlet extends HttpServlet {
             count = ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            DBUtil.close(conn,ps,null);
         }
         if(count == 1) {
-            request.getRequestDispatcher("/dept/list").forward(request,response);
+//            request.getRequestDispatcher("/dept/list").forward(request,response);
             //重定向
-//            response.sendRedirect(request.getContextPath() + "/dept/list");
+            response.sendRedirect(request.getContextPath() + "/dept/list");
         } else {
-            request.getRequestDispatcher("/error.html").forward(request,response);
-//            response.sendRedirect(request.getContextPath() + "/error.html");
+//            request.getRequestDispatcher("/error.html").forward(request,response);
+            response.sendRedirect(request.getContextPath() + "/error.html");
         }
     }
 
@@ -121,11 +123,11 @@ public class DeptServlet extends HttpServlet {
         if(count == 1) {
             //删除成功，跳转到闭门列表页面
             //需要执行另外一个servlet怎么办？转发或者重定向,这里用的转发
-            request.getRequestDispatcher("/dept/list").forward(request,response);
-//            response.sendRedirect(request.getContextPath() + "/dept/list");
+//            request.getRequestDispatcher("/dept/list").forward(request,response);
+            response.sendRedirect(request.getContextPath() + "/dept/list");
         } else {
-            request.getRequestDispatcher("/error.html").forward(request,response);
-//            response.sendRedirect(request.getContextPath() + "/error.html");
+//            request.getRequestDispatcher("/error.html").forward(request,response);
+            response.sendRedirect(request.getContextPath() + "/error.html");
         }
 
     }
@@ -166,6 +168,8 @@ public class DeptServlet extends HttpServlet {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            DBUtil.close(conn,ps,rs);
         }
         out.print("<input type='button' value='后退' onclick='window.history.back()'/>");
         out.print("</body>");
@@ -207,6 +211,8 @@ public class DeptServlet extends HttpServlet {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            DBUtil.close(conn,ps,rs);
         }
         out.print("<input type='submit' value='修改'/><br>");
         out.print("</form>");
@@ -233,14 +239,16 @@ public class DeptServlet extends HttpServlet {
             count = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            DBUtil.close(conn,ps,null);
         }
         if(count == 1) {
-            request.getRequestDispatcher("/dept/list").forward(request,response);
+//            request.getRequestDispatcher("/dept/list").forward(request,response);
             //重定向
-//            response.sendRedirect(request.getContextPath() + "/dept/list");
+            response.sendRedirect(request.getContextPath() + "/dept/list");
         } else {
-            request.getRequestDispatcher("/error.html").forward(request,response);
-//            response.sendRedirect(request.getContextPath() + "/error.html");
+//            request.getRequestDispatcher("/error.html").forward(request,response);
+            response.sendRedirect(request.getContextPath() + "/error.html");
         }
     }
 
@@ -304,6 +312,8 @@ public class DeptServlet extends HttpServlet {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            DBUtil.close(conn,ps,rs);
         }
         out.print("</table>");
         out.print("<hr>");
